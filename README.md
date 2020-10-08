@@ -81,7 +81,7 @@ The JSON itself is like previous one
 /tag/{id}  
 Deletes a tag by its id  
 
-  ### **user-controller**  
+  ### **UserController**  
   ##### GET  
   /users  
   Returns a list of all registered users   
