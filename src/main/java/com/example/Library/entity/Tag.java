@@ -1,5 +1,7 @@
 package com.example.Library.entity;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -9,10 +11,12 @@ public class Tag {
 
     @Id
     @Column(name = "id")
+    @ApiModelProperty(notes = "The database generated ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "name")
+    @ApiModelProperty(notes = "The tag name")
     private String name;
 
     public Integer getId() {

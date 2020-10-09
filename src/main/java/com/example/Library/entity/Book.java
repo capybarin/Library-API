@@ -1,5 +1,7 @@
 package com.example.Library.entity;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -9,21 +11,26 @@ public class Book {
 
     @Id
     @Column(name = "id")
+    @ApiModelProperty(notes = "The database generated ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "name")
+    @ApiModelProperty(notes = "The name of the book")
     private String name;
 
     @ManyToOne(targetEntity = Author.class)
     @JoinColumn(name = "authorid")
+    @ApiModelProperty(notes = "The author ID of the book")
     private Author author;
 
     @Column(name = "about")
+    @ApiModelProperty(notes = "The description of the book")
     private String about;
 
     @ManyToOne(targetEntity = Tag.class)
     @JoinColumn(name = "tagid")
+    @ApiModelProperty(notes = "The tag ID of the book")
     private Tag tag;
 
     public Integer getId() {

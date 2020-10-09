@@ -1,5 +1,7 @@
 package com.example.Library.entity;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Entity;
@@ -14,10 +16,12 @@ public class Role {
 
     @Id
     @Column(name = "id")
+    @ApiModelProperty(notes = "The database generated ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "name")
+    @ApiModelProperty(notes = "The name of the role")
     private String name;
 
     public Integer getId() {

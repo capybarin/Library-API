@@ -1,5 +1,7 @@
 package com.example.Library.entity;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -10,12 +12,15 @@ public class Author {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty(notes = "The database generated ID")
     private Integer id;
 
     @Column(name = "firstname")
+    @ApiModelProperty(notes = "The first name of the author")
     private String firstName;
 
     @Column(name = "lastname")
+    @ApiModelProperty(notes = "The last name of the author")
     private String lastName;
 
     public Integer getId() {
