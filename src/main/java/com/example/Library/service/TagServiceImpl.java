@@ -1,8 +1,8 @@
 package com.example.Library.service;
 
 import com.example.Library.entity.Tag;
+import com.example.Library.exception.NotFoundException;
 import com.example.Library.exception.ParameterMissingException;
-import com.example.Library.exception.TagNotFoundException;
 import com.example.Library.exception.WrongParameterException;
 import com.example.Library.repository.TagRepository;
 import org.apache.commons.logging.Log;
@@ -40,7 +40,7 @@ public class TagServiceImpl implements TagService {
     public Tag getById(Integer id) {
         if(tagRepository.getById(id) != null)
             return tagRepository.getById(id);
-        else throw new TagNotFoundException(id);
+        else throw new NotFoundException("Tag",id);
     }
 
     @Override
@@ -51,7 +51,7 @@ public class TagServiceImpl implements TagService {
     @Override
     public void deleteTagById(Integer id) {
         if (tagRepository.getById(id) == null){
-            throw new TagNotFoundException(id);
+            throw new NotFoundException("Tag",id);
         }
         try{
             tagRepository.deleteTagById(id);
@@ -64,7 +64,7 @@ public class TagServiceImpl implements TagService {
     @Override
     public void updateTag(Integer id, Tag updTag) {
         if (tagRepository.getById(id) == null){
-            throw new TagNotFoundException(id);
+            throw new NotFoundException("Tag",id);
         }
         Tag beforeUpdateTag = tagRepository.getById(id);
         System.out.println(updTag.getName());

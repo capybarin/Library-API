@@ -1,8 +1,8 @@
 package com.example.Library.service;
 
 import com.example.Library.entity.User;
+import com.example.Library.exception.NotFoundException;
 import com.example.Library.exception.ParameterMissingException;
-import com.example.Library.exception.UserNotFoundException;
 import com.example.Library.exception.WrongParameterException;
 import com.example.Library.repository.RoleRepository;
 import com.example.Library.repository.UserRepository;
@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService{
         User user = userRepository.getById(id);
         if (user != null)
             return user;
-        else throw new UserNotFoundException(id);
+        else throw new NotFoundException("User", id);
     }
 
     @Override

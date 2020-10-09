@@ -1,10 +1,7 @@
 package com.example.Library.service;
 
 import com.example.Library.entity.Book;
-import com.example.Library.exception.BookNotFoundException;
-import com.example.Library.exception.ForbiddenException;
-import com.example.Library.exception.ParameterMissingException;
-import com.example.Library.exception.WrongParameterException;
+import com.example.Library.exception.*;
 import com.example.Library.repository.AuthorRepository;
 import com.example.Library.repository.BookRepository;
 import com.example.Library.repository.TagRepository;
@@ -54,7 +51,7 @@ public class BookServiceImpl implements BookService {
         Book book = bookRepository.getById(id);
         if (book != null)
             return book;
-        else throw new BookNotFoundException(id);
+        else throw new NotFoundException("Book",id);
     }
 
     @Override
@@ -105,7 +102,7 @@ public class BookServiceImpl implements BookService {
             throw new ForbiddenException("Readers cannot update existing books");
         }
         if (bookRepository.getById(id) == null) {
-            throw new BookNotFoundException(id);
+            throw new NotFoundException("Book",id);
         }
         Book beforeUpdateBook = bookRepository.getById(id);
         if (updBook.getName() == null || updBook.getName().isEmpty()) {
@@ -142,7 +139,7 @@ public class BookServiceImpl implements BookService {
             throw new ForbiddenException("Readers cannot delete existing books");
         }
         if (bookRepository.getById(id) == null) {
-            throw new BookNotFoundException(id);
+            throw new NotFoundException("Book",id);
         }
         try{
             bookRepository.deleteBookById(id);
