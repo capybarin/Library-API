@@ -1,7 +1,7 @@
 # Library
 The app uses PostgreSQL 10.6, Spring Boot 2.2.10  
 For the first run, you have to uncomment 2 last lines in application.properties and comment them back after the first run.
-API uses HTTP basic auth to authenticate users
+API uses HTTP basic auth to authenticate users. Swagger 2 documentation located at "http://localhost:8080/swagger-ui.html"  
   
 ### **Authentication**  
 To check if credentials are ok you may use /ping endpoint. If credentials are ok you would get "pong" response.  
