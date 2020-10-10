@@ -23,11 +23,7 @@ public class TagServiceImpl implements TagService {
     @Override
     public Tag addTag(Tag newTag) {
         Tag tmpTag = new Tag();
-        if (newTag.getName() == null || newTag.getName().isEmpty()) {
-            throw new ParameterMissingException("name");
-        } else {
-            tmpTag.setName(newTag.getName());
-        }
+        tmpTag.setName(newTag.getName());
         try {
             return tagRepository.save(tmpTag);
         } catch (Exception e){
@@ -67,12 +63,10 @@ public class TagServiceImpl implements TagService {
             throw new NotFoundException("Tag",id);
         }
         Tag beforeUpdateTag = tagRepository.getById(id);
-        System.out.println(updTag.getName());
         if (updTag.getName() == null || updTag.getName().isEmpty()) {
             updTag.setName(beforeUpdateTag.getName());
         }
         try {
-            System.out.println(updTag.getName());
             tagRepository.updateTag(id, updTag.getName());
         } catch (Exception e){
             log.error(e);

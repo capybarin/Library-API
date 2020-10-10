@@ -60,34 +60,10 @@ public class BookServiceImpl implements BookService {
             throw new ForbiddenException("Readers cannot add new books");
         }
         Book tmpBook = new Book();
-        if (newBook.getName() == null || newBook.getName().isEmpty()) {
-            throw new ParameterMissingException("name");
-        } else {
-            tmpBook.setName(newBook.getName());
-        }
-        if (newBook.getAuthor() == null){
-            throw new ParameterMissingException("author object with id");
-        } else {
-            if (newBook.getAuthor().getId() == null || newBook.getAuthor().getId().toString().isEmpty()){
-                throw new ParameterMissingException("author object with id");
-            } else {
-                tmpBook.setAuthor(authorRepository.getById(newBook.getAuthor().getId()));
-            }
-        }
-        if (newBook.getAbout() == null || newBook.getAbout().isEmpty()) {
-            throw new ParameterMissingException("about");
-        } else {
-            tmpBook.setAbout(newBook.getAbout());
-        }
-        if (newBook.getTag() == null){
-            throw new ParameterMissingException("tag object with id");
-        } else {
-            if (newBook.getTag().getId() == null || newBook.getTag().getId().toString().isEmpty()){
-                throw new ParameterMissingException("tag object with id");
-            } else {
-                tmpBook.setTag(tagRepository.getById(newBook.getTag().getId()));
-            }
-        }
+        tmpBook.setName(newBook.getName());
+        tmpBook.setAuthor(authorRepository.getById(newBook.getAuthor().getId()));
+        tmpBook.setAbout(newBook.getAbout());
+        tmpBook.setTag(tagRepository.getById(newBook.getTag().getId()));
         try {
             return bookRepository.save(tmpBook);
         } catch (Exception e){
