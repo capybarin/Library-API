@@ -29,8 +29,8 @@ create table author
     id              bigserial not null
         constraint author_pkey
             primary key,
-    firstName varchar(40)  ,
-    lastName  varchar(40)
+    firstName varchar(40) not null ,
+    lastName  varchar(40) not null
 );
 
 create table tag
