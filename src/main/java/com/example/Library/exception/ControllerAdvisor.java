@@ -21,7 +21,7 @@ import java.util.Map;
 public class ControllerAdvisor extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(NotFoundException.class)
-    public ResponseEntity<Object> handleNotFoundException(NotFoundException e, WebRequest webRequest){
+    public ResponseEntity<Object> handleNotFoundException(NotFoundException e){
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("timestamp", LocalDateTime.now());
         body.put("message", e.getMessage());
