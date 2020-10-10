@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -17,7 +18,7 @@ public class TagController {
 
     @ApiOperation(value = "Create a new tag", response = Tag.class)
     @PostMapping(path = "/tag", produces = "application/json", consumes = "application/json")
-    public Tag newTag(@RequestBody Tag newTag){
+    public Tag newTag(@RequestBody @Valid Tag newTag){
         return tagService.addTag(newTag);
     }
 
@@ -36,7 +37,7 @@ public class TagController {
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     @ApiOperation(value = "Update a tag by its ID")
     @PutMapping(path = "/tag/{id}", produces = "application/json", consumes = "application/json")
-    public void updateTag(@PathVariable Integer id, @RequestBody Tag newTag){
+    public void updateTag(@PathVariable Integer id, @RequestBody @Valid Tag newTag){
         tagService.updateTag(id, newTag);
     }
 

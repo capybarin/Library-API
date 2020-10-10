@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "users")
@@ -30,11 +31,13 @@ public class User {
     private Role roleId;
 
     @Email
+    @NotNull
     @Column(name = "email", unique=true)
     @ApiModelProperty(notes = "The email of the user")
     private String email;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @NotNull
     @ApiModelProperty(notes = "The password of the user")
     @Column(name = "password")
     private String password;

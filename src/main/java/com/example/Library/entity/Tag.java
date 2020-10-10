@@ -3,6 +3,7 @@ package com.example.Library.entity;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
@@ -16,6 +17,7 @@ public class Tag {
     private Integer id;
 
     @Column(name = "name")
+    @NotNull
     @ApiModelProperty(notes = "The tag name")
     private String name;
 

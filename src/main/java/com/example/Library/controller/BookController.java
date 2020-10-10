@@ -9,6 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -31,14 +32,14 @@ public class BookController {
 
     @ApiOperation(value = "Create a new book", response = Book.class)
     @PostMapping(path = "/book", consumes = "application/json", produces = "application/json")
-    public Book createBook(@RequestBody Book newBook, @ApiIgnore Authentication authentication){
+    public Book createBook(@RequestBody @Valid Book newBook, @ApiIgnore Authentication authentication){
         return bookService.addBook(newBook, authentication);
     }
 
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     @ApiOperation(value = "Update a book by its ID")
     @PutMapping(path = "/book/{id}", produces = "application/json")
-    public void updateBook (@PathVariable Integer id, @RequestBody Book updBook, @ApiIgnore Authentication authentication){
+    public void updateBook (@PathVariable Integer id, @RequestBody @Valid Book updBook, @ApiIgnore Authentication authentication){
         bookService.updateBook(updBook, authentication, id);
     }
 

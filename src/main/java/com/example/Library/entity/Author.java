@@ -3,6 +3,7 @@ package com.example.Library.entity;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
@@ -16,10 +17,12 @@ public class Author {
     private Integer id;
 
     @Column(name = "firstname")
+    @NotNull
     @ApiModelProperty(notes = "The first name of the author")
     private String firstName;
 
     @Column(name = "lastname")
+    @NotNull
     @ApiModelProperty(notes = "The last name of the author")
     private String lastName;
 

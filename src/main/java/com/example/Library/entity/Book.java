@@ -3,6 +3,7 @@ package com.example.Library.entity;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
@@ -16,20 +17,24 @@ public class Book {
     private Integer id;
 
     @Column(name = "name")
+    @NotNull
     @ApiModelProperty(notes = "The name of the book")
     private String name;
 
     @ManyToOne(targetEntity = Author.class)
     @JoinColumn(name = "authorid")
+    @NotNull
     @ApiModelProperty(notes = "The author ID of the book")
     private Author author;
 
     @Column(name = "about")
+    @NotNull
     @ApiModelProperty(notes = "The description of the book")
     private String about;
 
     @ManyToOne(targetEntity = Tag.class)
     @JoinColumn(name = "tagid")
+    @NotNull
     @ApiModelProperty(notes = "The tag ID of the book")
     private Tag tag;
 

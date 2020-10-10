@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Column;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
@@ -21,6 +22,7 @@ public class Role {
     private Integer id;
 
     @Column(name = "name")
+    @NotNull
     @ApiModelProperty(notes = "The name of the role")
     private String name;
 

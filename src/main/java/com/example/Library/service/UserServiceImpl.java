@@ -2,7 +2,6 @@ package com.example.Library.service;
 
 import com.example.Library.entity.User;
 import com.example.Library.exception.NotFoundException;
-import com.example.Library.exception.ParameterMissingException;
 import com.example.Library.exception.WrongParameterException;
 import com.example.Library.repository.RoleRepository;
 import com.example.Library.repository.UserRepository;
@@ -43,16 +42,8 @@ public class UserServiceImpl implements UserService{
         tmpUser.setFirstName(newUser.getFirstName());
         tmpUser.setLastName(newUser.getLastName());
         tmpUser.setRoleId(roleRepository.findByName("READER"));
-        if (newUser.getEmail() == null || newUser.getEmail().isEmpty()) {
-            throw new ParameterMissingException("email");
-        } else {
-            tmpUser.setEmail(newUser.getEmail());
-        }
-        if (newUser.getPassword() == null || newUser.getPassword().isEmpty()) {
-            throw new ParameterMissingException("password");
-        } else {
-            tmpUser.setPassword(newUser.getPassword());
-        }
+        tmpUser.setEmail(newUser.getEmail());
+        tmpUser.setPassword(newUser.getPassword());
         try {
             return userRepository.save(tmpUser);
         } catch (Exception e){
