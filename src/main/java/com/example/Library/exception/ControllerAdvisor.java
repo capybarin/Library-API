@@ -30,7 +30,7 @@ public class ControllerAdvisor extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(ForbiddenException.class)
-    public ResponseEntity<Object> handleNotFoundException(ForbiddenException e){
+    public ResponseEntity<Object> forbiddenException(ForbiddenException e){
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("timestamp", LocalDateTime.now());
         body.put("message", e.getMessage());
@@ -39,7 +39,7 @@ public class ControllerAdvisor extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(WrongParameterException.class)
-    public ResponseEntity<Object> handleNotFoundException(WrongParameterException e){
+    public ResponseEntity<Object> handleWrongParameterException(WrongParameterException e){
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("timestamp", LocalDateTime.now());
         body.put("message", e.getMessage());
