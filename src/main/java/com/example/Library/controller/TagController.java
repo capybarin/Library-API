@@ -37,7 +37,7 @@ public class TagController {
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     @ApiOperation(value = "Update a tag by its ID")
     @PutMapping(path = "/tag/{id}", produces = "application/json", consumes = "application/json")
-    public void updateTag(@PathVariable Integer id, @RequestBody @Valid Tag newTag){
+    public void updateTag(@PathVariable Integer id, @RequestBody Tag newTag){
         tagService.updateTag(id, newTag);
     }
 

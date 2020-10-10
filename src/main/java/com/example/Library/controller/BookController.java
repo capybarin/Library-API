@@ -39,7 +39,7 @@ public class BookController {
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     @ApiOperation(value = "Update a book by its ID")
     @PutMapping(path = "/book/{id}", produces = "application/json")
-    public void updateBook (@PathVariable Integer id, @RequestBody @Valid Book updBook, @ApiIgnore Authentication authentication){
+    public void updateBook (@PathVariable Integer id, @RequestBody Book updBook, @ApiIgnore Authentication authentication){
         bookService.updateBook(updBook, authentication, id);
     }
 
